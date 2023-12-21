@@ -1,0 +1,47 @@
+## Dev Configuration ##
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-dev
+  labels:
+    app: nginx
+    env: dev
+    team: infra
+
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quota-nginx-dev
+  namespace: nginx-dev
+spec:
+  hard:
+    requests.cpu: "400m"
+    requests.memory: "400Mi"
+    limits.cpu: "400m"
+    limits.memory: "400Mi"
+
+## Stage Configuration ##
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-stg
+  labels:
+    app: nginx
+    env: stg
+    team: infra
+
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quota-nginx-stg
+  namespace: nginx-stg
+spec:
+  hard:
+    requests.cpu: "400m"
+    requests.memory: "400Mi"
+    limits.cpu: "400m"
+    limits.memory: "400Mi"
